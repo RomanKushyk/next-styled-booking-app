@@ -1,5 +1,6 @@
 "use client";
 import styled from "styled-components";
+import { DEVICE } from "@/constants/deviceSizes";
 
 export const Container = styled.header`
   display: flex;
@@ -12,6 +13,22 @@ export const Container = styled.header`
   background: #00000033;
   border-bottom: 1px solid #ffffff66;
   backdrop-filter: blur(68px);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    visibility 0s linear;
+
+  @media ${DEVICE.tabletLarge} {
+    transform: translateY(-80px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0s linear 0.3s;
+  }
 `;
 
 export const Title = styled.h2`
