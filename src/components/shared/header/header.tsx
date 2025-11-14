@@ -1,9 +1,11 @@
-import { Container, Title } from "./header.styles";
+import { Container, Content, Title } from "./header.styles";
 
 export function Header() {
   return (
     <Container>
-      <Title>6037 Venture Partnership</Title>
+      <Content>
+        <Title>6037 Venture Partnership</Title>
+      </Content>
     </Container>
   );
 }
