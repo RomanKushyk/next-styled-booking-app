@@ -1,5 +1,6 @@
 "use client";
 import styled from "styled-components";
+import { DEVICE } from "@/constants/deviceSizes";
 
 export const Container = styled.header`
   display: flex;
@@ -12,6 +13,20 @@ export const Container = styled.header`
   background: #00000033;
   border-bottom: 1px solid #ffffff66;
   backdrop-filter: blur(68px);
+
+  @media ${DEVICE.tabletLarge} {
+    display: none;
+  }
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  height: 100%;
+  max-width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 `;
 
 export const Title = styled.h2`
