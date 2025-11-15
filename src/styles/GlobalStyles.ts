@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle`
     --text-secondary: #8F91A1;
     --text-light: #FFF;
     --text-dark: #000;
+    --button-active: #16171B;
+    --button-inactive: #DADBE8;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -21,6 +23,8 @@ export const GlobalStyles = createGlobalStyle`
       --text-secondary: #8F91A1;
       --text-light: #FFF;
       --text-dark: #000;
+      --button-active: #16171B;
+      --button-inactive: #DADBE8;
     }
   }
 

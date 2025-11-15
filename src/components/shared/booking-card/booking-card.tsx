@@ -23,6 +23,7 @@ import Ellipse from "@/assets/icons/ellipse.svg";
 import ClockIcon from "@/assets/icons/clock.svg";
 import Background from "@/assets/icons/background-m.svg";
 import Image from "next/image";
+import Button from "@/components/ui/button/button";
 
 export default function BookingCard() {
   return (
@@ -62,7 +63,11 @@ export default function BookingCard() {
           </HeaderText>
         </CardHeader>
 
-        <CardContent></CardContent>
+        <CardContent>
+          <div>affaff</div>
+
+          <Button>Confirm</Button>
+        </CardContent>
       </Card>
     </Container>
   );
