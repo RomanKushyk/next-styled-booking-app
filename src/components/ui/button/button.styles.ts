@@ -14,7 +14,7 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
   background: var(
     ${({ $isActive }) => ($isActive ? "--button-active" : "--button-inactive")}
   );
-  cursor: pointer;
+  cursor: ${({ $isActive }) => ($isActive ? "pointer" : "not-allowed")};
   pointer-events: ${({ $isActive }) => ($isActive ? "none" : "auto")};
   touch-action: ${({ $isActive }) => ($isActive ? "none" : "auto")};
 
