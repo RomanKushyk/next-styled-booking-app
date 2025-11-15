@@ -1,6 +1,6 @@
 import { Container, Content, Title } from "./header.styles";
 
-export function Header() {
+export default function Header() {
   return (
     <Container>
       <Content>
