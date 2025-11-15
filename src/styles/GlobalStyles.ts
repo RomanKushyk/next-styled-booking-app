@@ -7,12 +7,20 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --background: #E28F11;
     --foreground: #16171B;
+    --text-primary: #16171B;
+    --text-secondary: #8F91A1;
+    --text-light: #FFF;
+    --text-dark: #000;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       --background: #E28F11;
       --foreground: #FFFFFF;
+      --text-primary: #16171B;
+      --text-secondary: #8F91A1;
+      --text-light: #FFF;
+      --text-dark: #000;
     }
   }
 
