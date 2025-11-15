@@ -1,7 +1,7 @@
 "use client";
 
 import { createGlobalStyle } from "styled-components";
-import Background from "@/assets/icons/background.svg";
+import Background from "@/assets/icons/background-d.svg";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
