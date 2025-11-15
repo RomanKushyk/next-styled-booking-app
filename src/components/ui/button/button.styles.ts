@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 
-export const ButtonEl = styled.button<{ isActive: boolean }>`
+export const ButtonEl = styled.button<{ $isActive: boolean }>`
   max-width: 370px;
   width: 100%;
   display: flex;
@@ -12,9 +12,11 @@ export const ButtonEl = styled.button<{ isActive: boolean }>`
   border: none;
   outline: none;
   background: var(
-    ${({ isActive }) => (isActive ? "--button-active" : "--button-inactive")}
+    ${({ $isActive }) => ($isActive ? "--button-active" : "--button-inactive")}
   );
   cursor: pointer;
+  pointer-events: ${({ $isActive }) => ($isActive ? "none" : "auto")};
+  touch-action: ${({ $isActive }) => ($isActive ? "none" : "auto")};
 
   font-family: var(--font-poppins);
   font-weight: 600;

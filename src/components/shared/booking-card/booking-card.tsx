@@ -1,3 +1,4 @@
+"use client";
 import {
   Container,
   Banner,
@@ -66,7 +67,7 @@ export default function BookingCard() {
         <CardContent>
           <div>affaff</div>
 
-          <Button>Confirm</Button>
+          <Button isActive={false}>Confirm</Button>
         </CardContent>
       </Card>
     </Container>
