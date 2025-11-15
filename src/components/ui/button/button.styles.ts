@@ -15,8 +15,11 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
     ${({ $isActive }) => ($isActive ? "--button-active" : "--button-inactive")}
   );
   cursor: ${({ $isActive }) => ($isActive ? "pointer" : "not-allowed")};
-  pointer-events: ${({ $isActive }) => ($isActive ? "none" : "auto")};
-  touch-action: ${({ $isActive }) => ($isActive ? "none" : "auto")};
+  pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
+  touch-action: ${({ $isActive }) => ($isActive ? "auto" : "none")};
+  transition:
+    scale 0.3s,
+    filter 0.3s;
 
   font-family: var(--font-poppins);
   font-weight: 600;
@@ -25,4 +28,12 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
   letter-spacing: 3%;
   text-align: center;
   vertical-align: middle;
+
+  &:hover {
+    filter: drop-shadow(0 0 20px #00000080);
+  }
+
+  &:active {
+    scale: 0.99;
+  }
 `;
