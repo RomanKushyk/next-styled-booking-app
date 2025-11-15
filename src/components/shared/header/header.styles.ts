@@ -27,7 +27,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  color: var(--text-dark);
+  color: var(--text-light);
 `;
 
 export const Title = styled.h2`

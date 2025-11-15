@@ -1,6 +1,12 @@
 import {
   Container,
-  OuterHeader,
+  Banner,
+  BannerContent,
+  SessionDetails,
+  SessionTitle,
+  SessionSubtitle,
+  SessionDuration,
+  OuterHeaderImage,
   Card,
   CardHeader,
   HeaderImage,
@@ -10,20 +16,50 @@ import {
   CardContent,
 } from "./booking-card.styles";
 import ProfileImgD from "@/assets/images/profile-img-desktop.png";
+import ProfileImgM from "@/assets/images/profile-img-mobile.png";
+import Ellipse from "@/assets/icons/ellipse.svg";
+import ClockIcon from "@/assets/icons/clock.svg";
+import Image from "next/image";
 
 export default function BookingCard() {
   return (
     <Container>
-      <OuterHeader></OuterHeader>
+      <Banner>
+        <BannerContent>
+          <SessionDetails>
+            <SessionTitle>Cool session</SessionTitle>
+
+            <SessionSubtitle>Additional type</SessionSubtitle>
+          </SessionDetails>
+
+          <SessionDuration>
+            <Image src={ClockIcon} alt="Clock icon" />
+            30 min
+          </SessionDuration>
+        </BannerContent>
+
+        <Image
+          src={Ellipse}
+          alt="Ellipse"
+          style={{
+            width: "301px",
+            aspectRatio: 1,
+            position: "absolute",
+            right: "-57px",
+            bottom: "-78px",
+          }}
+        />
+        <OuterHeaderImage src={ProfileImgM.src} alt="Profile image" />
+      </Banner>
 
       <Card>
         <CardHeader>
-          <HeaderImage src={ProfileImgD.src} alt="Profile" />
+          <HeaderImage src={ProfileImgD.src} alt="Profile image" />
 
           <HeaderText>
-            <HeaderTitle as="h1">Book a Session</HeaderTitle>
+            <HeaderTitle>Book a Session</HeaderTitle>
 
-            <HeaderSubTitle as="p">
+            <HeaderSubTitle>
               Choose a date and time that is convenient for you to e-meet your
               stylist
             </HeaderSubTitle>
