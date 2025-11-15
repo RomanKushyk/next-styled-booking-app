@@ -67,7 +67,7 @@ export default function BookingCard() {
         <CardContent>
           <div>affaff</div>
 
-          <Button isActive={false}>Confirm</Button>
+          <Button isActive={true}>Confirm</Button>
         </CardContent>
       </Card>
     </Container>
