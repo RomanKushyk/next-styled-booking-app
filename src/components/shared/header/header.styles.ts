@@ -5,7 +5,7 @@ import { DEVICE } from "@/constants/deviceSizes";
 export const Container = styled.header`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 80px;
@@ -14,7 +14,7 @@ export const Container = styled.header`
   border-bottom: 1px solid #ffffff66;
   backdrop-filter: blur(68px);
 
-  @media ${DEVICE.tabletLarge} {
+  @media ${DEVICE.tablet} {
     display: none;
   }
 `;
