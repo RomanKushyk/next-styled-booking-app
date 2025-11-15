@@ -18,11 +18,12 @@ export const Container = styled.div`
 `;
 
 export const Banner = styled.div`
+  flex: 1 1 auto;
   position: relative;
   display: none;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-end;
   width: 100%;
   pointer-events: auto;
 
@@ -88,7 +89,17 @@ export const SessionDuration = styled.p`
   vertical-align: middle;
 `;
 
-export const OuterHeaderImage = styled.img`
+export const BannerBg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  object-fit: fill;
+  z-index: -1;
+`;
+
+export const BannerProfileImage = styled.img`
   position: absolute;
   bottom: -41px;
   right: -29px;
@@ -98,11 +109,20 @@ export const OuterHeaderImage = styled.img`
   object-position: top center;
 `;
 
+export const BannerProfileImageBg = styled.img`
+  width: 301px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: -57px;
+  bottom: -78px;
+`;
+
 export const Card = styled.div`
   width: 100%;
   height: 100%;
   max-width: 568px;
   max-height: 620px;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

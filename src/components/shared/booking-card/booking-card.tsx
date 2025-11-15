@@ -6,7 +6,9 @@ import {
   SessionTitle,
   SessionSubtitle,
   SessionDuration,
-  OuterHeaderImage,
+  BannerBg,
+  BannerProfileImage,
+  BannerProfileImageBg,
   Card,
   CardHeader,
   HeaderImage,
@@ -19,12 +21,15 @@ import ProfileImgD from "@/assets/images/profile-img-desktop.png";
 import ProfileImgM from "@/assets/images/profile-img-mobile.png";
 import Ellipse from "@/assets/icons/ellipse.svg";
 import ClockIcon from "@/assets/icons/clock.svg";
+import Background from "@/assets/icons/background-m.svg";
 import Image from "next/image";
 
 export default function BookingCard() {
   return (
     <Container>
       <Banner>
+        <BannerBg src={Background.src} alt="background" />
+
         <BannerContent>
           <SessionDetails>
             <SessionTitle>Cool session</SessionTitle>
@@ -38,18 +43,9 @@ export default function BookingCard() {
           </SessionDuration>
         </BannerContent>
 
-        <Image
-          src={Ellipse}
-          alt="Ellipse"
-          style={{
-            width: "301px",
-            aspectRatio: 1,
-            position: "absolute",
-            right: "-57px",
-            bottom: "-78px",
-          }}
-        />
-        <OuterHeaderImage src={ProfileImgM.src} alt="Profile image" />
+        <BannerProfileImageBg src={Ellipse.src} alt="Profile image bacground" />
+
+        <BannerProfileImage src={ProfileImgM.src} alt="Profile image" />
       </Banner>
 
       <Card>
