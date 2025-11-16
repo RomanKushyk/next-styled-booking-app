@@ -26,8 +26,8 @@ export const RowWrapper = styled.div`
 
 /* navigation arrows */
 export const NavButton = styled.button`
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: none;
   background: #ffffff;
@@ -42,9 +42,12 @@ export const NavButton = styled.button`
 `;
 
 /* scroll row - generic for days & times */
-export const ScrollRow = styled.div<{ asTime?: boolean }>`
+export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   display: flex;
-  gap: 12px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
   overflow-x: auto;
   padding: 10px 6px;
   scroll-behavior: smooth;
@@ -52,6 +55,7 @@ export const ScrollRow = styled.div<{ asTime?: boolean }>`
   /* hide native scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -71,6 +75,7 @@ export const ScrollRow = styled.div<{ asTime?: boolean }>`
     z-index: 3;
   }
   &::before {
+    position: absolute;
     left: 0;
     background: linear-gradient(
       90deg,
@@ -79,6 +84,7 @@ export const ScrollRow = styled.div<{ asTime?: boolean }>`
     );
   }
   &::after {
+    position: absolute;
     right: 0;
     background: linear-gradient(
       270deg,

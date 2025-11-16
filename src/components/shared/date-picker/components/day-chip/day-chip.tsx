@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { DayButton, DayDow, DayDom, DayMon } from "./day-chip.styles";
+import { DayButton, DayDetails } from "./day-chip.styles";
 import { format } from "date-fns";
 
 type Props = {
@@ -21,15 +21,13 @@ export function DayChip({
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       aria-pressed={selected}
-      selected={selected}
+      $selected={selected}
       $disabled={disabled}
       {...rest}
     >
-      <DayDow>{format(date, "EEE")}</DayDow>
+      <DayDetails>{format(date, "EEE")}</DayDetails>
 
-      <DayDom>{format(date, "d")}</DayDom>
-
-      <DayMon>{format(date, "MMM")}</DayMon>
+      <DayDetails>{format(date, "d")}</DayDetails>
     </DayButton>
   );
 }
