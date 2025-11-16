@@ -17,6 +17,7 @@ import {
   HeaderTitle,
   HeaderSubTitle,
   CardContent,
+  DatePickerWrapper,
 } from "./booking-card.styles";
 import ProfileImgD from "@/assets/images/profile-img-desktop.png";
 import ProfileImgM from "@/assets/images/profile-img-mobile.png";
@@ -25,6 +26,7 @@ import ClockIcon from "@/assets/icons/clock.svg";
 import Background from "@/assets/icons/background-m.svg";
 import Image from "next/image";
 import Button from "@/components/ui/button/button";
+import DateTimeSelector from "@/components/shared/date-picker/date-picker";
 
 export default function BookingCard() {
   return (
@@ -65,7 +67,9 @@ export default function BookingCard() {
         </CardHeader>
 
         <CardContent>
-          <div>affaff</div>
+          <DatePickerWrapper>
+            <DateTimeSelector />
+          </DatePickerWrapper>
 
           <Button isActive={true}>Confirm</Button>
         </CardContent>
