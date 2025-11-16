@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     --text-secondary: #8F91A1;
     --text-light: #FFF;
     --text-dark: #000;
+    --text-accent: #DE3A6B;
     --button-active: #16171B;
     --button-inactive: #DADBE8;
   }
@@ -23,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
       --text-secondary: #8F91A1;
       --text-light: #FFF;
       --text-dark: #000;
+      --text-accent: #DE3A6B;
       --button-active: #16171B;
       --button-inactive: #DADBE8;
     }
