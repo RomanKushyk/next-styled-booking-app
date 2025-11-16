@@ -2,17 +2,28 @@ import styled from "styled-components";
 
 export const MonthsWrapper = styled.div`
   display: flex;
-  gap: 8px;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0 48px;
+  gap: 45px;
 `;
 
-export const MonthButton = styled.button<{ active?: boolean }>`
-  padding: 6px 10px;
-  border-radius: 8px;
+export const MonthButton = styled.button`
   border: none;
   cursor: pointer;
-  background: ${({ active }) => (active ? "#111827" : "transparent")};
-  color: ${({ active }) => (active ? "#fff" : "rgba(0,0,0,0.7)")};
-  font-weight: 600;
-  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  vertical-align: middle;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--text-primary);
+  }
 `;

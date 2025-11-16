@@ -13,7 +13,7 @@ export const Root = styled.div`
 export const MonthsRowWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding: 0 6px;
+  align-items: center;
 `;
 
 /* Day row wrapper with fade shadows via pseudo-elements */
