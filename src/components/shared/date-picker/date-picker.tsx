@@ -14,6 +14,7 @@ import { DayChip } from "./components/day-chip/day-chip";
 import { TimeChip } from "./components/time-chip/time-chip";
 import { useMonthTracking } from "./hooks/use-month-tracking";
 import { useSwipeScroll } from "./hooks/use-swipe-controll";
+import Chevron from "@/components/icons/chevron";
 
 type Props = {
   /** emit selected date+time as Date + formatted time string */
@@ -44,6 +45,12 @@ export default function DateTimeSelector({
 }: Props): JSX.Element {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTimeISO, setSelectedTimeISO] = useState<string | null>(null);
+  const [daysScrollable, setDaysScrollable] = useState<
+    "left" | "right" | "both"
+  >("left");
+  const [timeScrollable, setTimeScrollable] = useState<
+    "left" | "right" | "both"
+  >("left");
 
   const days = useMemo(() => {
     const today = startOfToday();
@@ -89,19 +96,22 @@ export default function DateTimeSelector({
     return slots;
   }, [selectedDate, minutesStep]);
 
-  const isDateDisabled = (d: Date): boolean => {
+  const checkDateDisabled = (d: Date): boolean => {
     if (disableWeekends) {
       const day = d.getDay();
+
       if (day === 0 || day === 6) return true;
     }
+
     if (typeof disabledDate === "function") {
       return disabledDate(d);
     }
+
     return false;
   };
 
-  function handleSelectDate(d: Date) {
-    if (isDateDisabled(d)) return;
+  const handleSelectDate = (d: Date) => {
+    if (checkDateDisabled(d)) return;
     setSelectedDate(d);
     setSelectedTimeISO(null);
     // onChange not called until time selected
@@ -117,9 +127,9 @@ export default function DateTimeSelector({
         container.scrollTo({ left: center, behavior: "smooth" });
       }
     }
-  }
+  };
 
-  function handleSelectTime(iso: string, label: string) {
+  const handleSelectTime = (iso: string, label: string) => {
     setSelectedTimeISO(iso);
     if (selectedDate && onChange) {
       onChange({ date: selectedDate, timeISO: iso, timeLabel: label });
@@ -136,7 +146,40 @@ export default function DateTimeSelector({
         container.scrollTo({ left: center, behavior: "smooth" });
       }
     }
-  }
+  };
+
+  const scroll = (
+    el: HTMLElement | null,
+    dir: "left" | "right",
+    step: number = 72 * 3,
+  ) => {
+    if (!el) return;
+
+    el.scrollBy({
+      left: (dir === "left" ? -1 : 1) * step,
+      behavior: "smooth",
+    });
+  };
+
+  const handleDaysScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+    if (!e.currentTarget) return;
+
+    const { scrollLeft = 0, scrollWidth = 0 } = e.target as HTMLElement;
+
+    setDaysScrollable(
+      !scrollLeft ? "left" : scrollLeft === scrollWidth ? "right" : "both",
+    );
+  };
+
+  const handleTimeScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+    if (!e.currentTarget) return;
+
+    const { scrollLeft = 0, scrollWidth = 0 } = e.target as HTMLElement;
+
+    setTimeScrollable(
+      !scrollLeft ? "left" : scrollLeft === scrollWidth ? "right" : "both",
+    );
+  };
 
   return (
     <Root>
@@ -153,16 +196,22 @@ export default function DateTimeSelector({
       <RowWrapper>
         <NavButton
           aria-label="prev"
-          onClick={() =>
-            daysScrollRef.current?.scrollBy({ left: -240, behavior: "smooth" })
-          }
+          onClick={() => scroll(daysScrollRef.current, "left")}
         >
-          ‹
+          <Chevron
+            direction="left"
+            color={daysScrollable !== "left" ? "#16171B" : "#C0C1D1"}
+          />
         </NavButton>
 
-        <ScrollRow ref={daysScrollRef} role="list" aria-label="dates row">
+        <ScrollRow
+          ref={daysScrollRef}
+          role="list"
+          aria-label="dates row"
+          onScroll={handleDaysScroll}
+        >
           {days.map((d) => {
-            const disabled = isDateDisabled(d);
+            const disabled = checkDateDisabled(d);
             return (
               <DayChip
                 key={d.toISOString()}
@@ -182,11 +231,12 @@ export default function DateTimeSelector({
 
         <NavButton
           aria-label="next"
-          onClick={() =>
-            daysScrollRef.current?.scrollBy({ left: 240, behavior: "smooth" })
-          }
+          onClick={() => scroll(daysScrollRef.current, "right")}
         >
-          ›
+          <Chevron
+            direction="right"
+            color={daysScrollable !== "right" ? "#16171B" : "#C0C1D1"}
+          />
         </NavButton>
       </RowWrapper>
 
@@ -194,21 +244,20 @@ export default function DateTimeSelector({
         <TimeRow>
           <NavButton
             aria-label="prev-time"
-            onClick={() =>
-              timesScrollRef.current?.scrollBy({
-                left: -240,
-                behavior: "smooth",
-              })
-            }
+            onClick={() => scroll(timesScrollRef.current, "left")}
           >
-            ‹
+            <Chevron
+              direction="left"
+              color={timeScrollable !== "left" ? "#16171B" : "#C0C1D1"}
+            />
           </NavButton>
 
           <ScrollRow
             ref={timesScrollRef}
             role="list"
             aria-label="times row"
-            asTime
+            $asTime
+            onScroll={handleTimeScroll}
           >
             {timeSlots.length === 0 ? (
               <EmptyPlaceholder>No available times</EmptyPlaceholder>
@@ -230,14 +279,12 @@ export default function DateTimeSelector({
 
           <NavButton
             aria-label="next-time"
-            onClick={() =>
-              timesScrollRef.current?.scrollBy({
-                left: 240,
-                behavior: "smooth",
-              })
-            }
+            onClick={() => scroll(timesScrollRef.current, "right")}
           >
-            ›
+            <Chevron
+              direction="right"
+              color={timeScrollable !== "right" ? "#16171B" : "#C0C1D1"}
+            />
           </NavButton>
         </TimeRow>
       ) : null}
