@@ -21,12 +21,11 @@ export function MonthTabs({
         return (
           <MonthButton
             key={m.toISOString()}
-            active={active}
             onClick={() => onClickMonth(i)}
             aria-selected={active}
             role="tab"
           >
-            {format(m, "MMM yyyy")}
+            {format(m, "MMM")}
           </MonthButton>
         );
       })}
