@@ -43,7 +43,7 @@ export const BannerContent = styled.div`
   font-family: var(--font-poppins), sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 150%;
   color: var(--text-light);
 `;
 
@@ -57,7 +57,7 @@ export const SessionDetails = styled.div`
 export const SessionTitle = styled.h2`
   font-weight: 500;
   font-size: 27px;
-  line-height: 41px;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
 `;
@@ -65,7 +65,7 @@ export const SessionTitle = styled.h2`
 export const SessionSubtitle = styled.h3`
   font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
 `;
@@ -84,7 +84,7 @@ export const SessionDuration = styled.p`
 
   font-weight: 400;
   font-size: 13px;
-  line-height: 20px;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
 `;
@@ -180,14 +180,14 @@ export const HeaderText = styled.div`
   font-family: var(--font-poppins), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 150%;
 `;
 
 export const HeaderTitle = styled.h2`
   font-family: var(--font-kaisei-tokumin), sans-serif;
   font-weight: 700;
   font-size: 28px;
-  line-height: 1;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
   color: var(--text-primary);
