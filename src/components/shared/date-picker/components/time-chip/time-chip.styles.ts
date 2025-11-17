@@ -4,8 +4,7 @@ export const TimeButton = styled.button<{ $selected?: boolean }>`
   flex: 1 0 auto;
   width: 81px;
   height: 45px;
-  //padding: 10px 18px;
-  //min-width: 96px;
+  padding: 2px 5px;
   border-radius: 100px;
   border: 1px solid
     ${({ $selected }) => ($selected ? "transparent" : "#e8ebf4")};
@@ -14,10 +13,15 @@ export const TimeButton = styled.button<{ $selected?: boolean }>`
     ${({ $selected }) => ($selected ? "--text-accent" : "--text-primary")}
   );
   cursor: pointer;
+
   transition:
-    transform 300ms cubic-bezier(0.2, 0.9, 0.3, 1),
-    opacity 300ms ease;
-  opacity: 1;
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(2px);
+  }
 `;
 
 export const TimeDetails = styled.span`
