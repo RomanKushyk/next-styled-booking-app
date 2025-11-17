@@ -75,6 +75,7 @@ export default function DateTimeSelector({
   // generate times for selected date (12h format labels, ISO string values)
   const timeSlots = useMemo(() => {
     if (!selectedDate) return [];
+
     const slots: { iso: string; label: string }[] = [];
     const now = new Date();
 
@@ -83,14 +84,17 @@ export default function DateTimeSelector({
       for (let m = 0; m < 60; m += minutesStep) {
         const d = new Date(selectedDate);
         d.setHours(h, m, 0, 0);
+
         if (d < now) continue; // exclude past times
+
         const iso = d.toISOString();
         // format label 12-hour hh:mm AM/PM
-        const label = d.toLocaleTimeString(undefined, {
-          hour: "2-digit",
+        const label = d.toLocaleTimeString("en-US", {
+          hour: "numeric",
           minute: "2-digit",
           hour12: true,
         });
+
         slots.push({ iso, label });
       }
     }
@@ -132,15 +136,18 @@ export default function DateTimeSelector({
 
   const handleSelectTime = (iso: string, label: string) => {
     setSelectedTimeISO(iso);
+
     if (selectedDate && onChange) {
       onChange({ date: selectedDate, timeISO: iso, timeLabel: label });
     }
     // optional: auto-scroll time into center
     const container = timesScrollRef.current;
+
     if (container) {
       const el = container.querySelector(
         `[data-time="${iso}"]`,
       ) as HTMLElement | null;
+
       if (el) {
         const center =
           el.offsetLeft + el.offsetWidth / 2 - container.clientWidth / 2;

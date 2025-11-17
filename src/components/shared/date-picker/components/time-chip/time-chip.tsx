@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { TimeButton } from "./time-chip.styles";
+import { TimeButton, TimeDetails } from "./time-chip.styles";
 
 type Props = {
   iso: string;
@@ -19,12 +19,12 @@ export function TimeChip({
   onClick,
   ...rest
 }: Props): JSX.Element {
-  const delay = Math.min(200 + index * 20, 800); // cascade delay cap
+  const delay = Math.min(200 + index * 20, 800);
 
   return (
     <TimeButton
       onClick={onClick}
-      selected={selected}
+      $selected={selected}
       style={{
         transitionDuration: `${animationMs}ms`,
         transitionDelay: `${delay}ms`,
@@ -32,7 +32,7 @@ export function TimeChip({
       data-iso={iso}
       {...rest}
     >
-      {label}
+      <TimeDetails>{label}</TimeDetails>
     </TimeButton>
   );
 }

@@ -34,7 +34,7 @@ export const Title = styled.h2`
   font-family: var(--font-poppins), sans-serif;
   font-weight: 600;
   font-size: 22px;
-  line-height: 100%;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
 `;

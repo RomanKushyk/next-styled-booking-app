@@ -29,11 +29,11 @@ export const DayButton = styled.button<{
   }
 `;
 
-export const DayDetails = styled.div`
+export const DayDetails = styled.span`
   font-family: var(--font-poppins), sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 150%;
   letter-spacing: 0;
   text-align: center;
   vertical-align: middle;
