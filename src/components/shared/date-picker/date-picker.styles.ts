@@ -1,12 +1,17 @@
 "use client";
 import styled from "styled-components";
+import { DEVICE } from "@/constants/deviceSizes";
 
 /* Root wrapper */
 export const Root = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 40px;
   width: 100%;
+
+  @media ${DEVICE.tablet} {
+    gap: 32px;
+  }
 `;
 
 export const DateGroupWrapper = styled.div`
@@ -48,6 +53,10 @@ export const NavButton = styled.button`
   align-items: center;
   justify-content: center;
   color: #000;
+
+  @media ${DEVICE.tablet} {
+    display: none;
+  }
 `;
 
 /* scroll row - generic for days & times */
@@ -58,7 +67,6 @@ export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   align-items: center;
   gap: 8px;
   overflow-x: auto;
-  padding: 10px 6px;
   scroll-behavior: smooth;
 
   /* hide native scrollbar */
@@ -82,7 +90,6 @@ export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   );
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
-
 `;
 
 export const TimeRow = styled.div`

@@ -195,6 +195,7 @@ export const HeaderTitle = styled.h2`
 
 export const HeaderSubTitle = styled.h3`
   font-weight: 400;
+  font-size: inherit;
   color: var(--text-secondary);
 
   @media ${DEVICE.tablet} {
