@@ -24,7 +24,7 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
   font-family: var(--font-poppins);
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 150%;
   letter-spacing: 3%;
   text-align: center;
   vertical-align: middle;
