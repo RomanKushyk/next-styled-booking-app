@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Booking Session App
 
-## Getting Started
+An adaptive booking interface built with **Next.js 16**, **React 19**,
+**TypeScript**, **styled-components**, and **Zustand**.\
+The application allows users to select a session date and time,
+validates the input, and outputs the selected timestamp upon
+confirmation.\
+Automatic deployment to **GitHub Pages** is configured for pushes to the
+`master` branch.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+### 📅 Date Selection
+
+- Displays all dates from **today** up to **6 weeks ahead**.
+- Fully adapted for small screen heights (including under 600px).
+
+### ⏰ Time Selection
+
+- After choosing a date, a time selector appears.
+- Time format: **12-hour (AM/PM)**.
+- Interval: **every 15 minutes**.
+- Past times are automatically disabled.
+
+### ✔️ Confirmation Flow
+
+- The **Confirm** button becomes active only when both date and time
+  are selected.
+- On click, the final **timestamp** is logged to the console.
+
+### 🗂 Additional Features
+
+- Integrated example of global state management using **Zustand**.
+- Demonstration of dynamic SVG icons inside TSX components.
+- Fully responsive layout optimized for screens from iPhone SE to 4K.
+- Code follows **ESLint (Next.js/Airbnb) + Prettier** rules.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **styled-components 6**
+- **Zustand 5**
+- **react-day-picker**
+- Automatic font optimization using `next/font`
+
+---
+
+## 📦 Installation & Running
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open in browser:\
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Main page file:\
+`app/page.tsx`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+```json
+npm run dev        # start development server
+npm run build      # build for production
+npm run start      # run production build
+npm run lint       # lint with ESLint
+npm run format     # format with Prettier
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Deployment
 
-## Deploy on Vercel
+This project is configured to automatically deploy to **GitHub Pages**
+whenever changes are pushed to the `master` branch.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Architecture Notes
+
+**Next.js 16 + React 19**\
+Modern, fast, stable, and ideal for production-grade UI applications.
+
+**styled-components**\
+SSR-friendly styling solution with dynamic theming and scoped component
+styles.
+
+**Zustand**\
+Minimalistic, fast, and intuitive state management library --- perfect
+for UI-level state.
+
+**TypeScript**\
+Provides strict type safety and improved maintainability.
+
+---
+
+## 📜 License
+
+This project is released under the MIT license.
