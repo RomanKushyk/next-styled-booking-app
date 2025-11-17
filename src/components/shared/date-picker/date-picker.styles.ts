@@ -9,6 +9,14 @@ export const Root = styled.div`
   width: 100%;
 `;
 
+export const DateGroupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  width: 100%;
+`;
+
 /* Months row */
 export const MonthsRowWrapper = styled.div`
   display: flex;
@@ -20,7 +28,9 @@ export const MonthsRowWrapper = styled.div`
 export const RowWrapper = styled.div`
   position: relative;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  gap: 24px;
   width: 100%;
 `;
 
@@ -37,7 +47,6 @@ export const NavButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 8px;
   color: #000;
 `;
 
@@ -64,39 +73,23 @@ export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   position: relative;
   flex: 1;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 48px;
-    pointer-events: none;
-    z-index: 3;
-  }
-  &::before {
-    position: absolute;
-    left: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
-  }
-  &::after {
-    position: absolute;
-    right: 0;
-    background: linear-gradient(
-      270deg,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
-  }
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 48px,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+
 `;
 
 export const TimeRow = styled.div`
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  gap: 24px;
 `;
 
 export const EmptyPlaceholder = styled.div`
