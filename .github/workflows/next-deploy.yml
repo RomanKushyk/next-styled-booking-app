@@ -17,21 +17,23 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Clean npm cache and remove potential conflicts
-        run: |
-          npm cache clean --force
-          rm -rf node_modules package-lock.json
-
       - name: Install dependencies
         run: npm install
 
       - name: Build Next.js project
         run: npm run build
 
-      - name: Upload artifact (Next.js static export)
+      - name: Prepare export folder
+        run: |
+          mkdir exported
+          cp -R .next/server/app/* exported/
+          mkdir -p exported/_next
+          cp -R .next/static exported/_next/static
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .next/server/app
+          path: exported
 
   deploy:
     needs: build
