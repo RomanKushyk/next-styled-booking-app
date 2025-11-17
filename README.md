@@ -8,6 +8,10 @@ confirmation.\
 Automatic deployment to **GitHub Pages** is configured for pushes to the
 `master` branch.
 
+### 🔗 Live Demo
+
+https://romankushyk.github.io/next-styled-booking-app/
+
 ---
 
 ## ✨ Features
@@ -82,6 +86,10 @@ npm run format     # format with Prettier
 
 This project is configured to automatically deploy to **GitHub Pages**
 whenever changes are pushed to the `master` branch.
+
+### Demo URL
+
+https://romankushyk.github.io/next-styled-booking-app/
 
 ---
 
