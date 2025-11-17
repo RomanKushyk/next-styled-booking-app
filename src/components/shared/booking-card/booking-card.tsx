@@ -27,8 +27,11 @@ import Image from "next/image";
 import Button from "@/components/ui/button/button";
 import DateTimeSelector from "@/components/shared/date-picker/date-picker";
 import { useState } from "react";
+import { useAppStore } from "@/hooks/stores";
 
 export default function BookingCard() {
+  const { timeISO, setTimeISO } = useAppStore((state) => state);
+
   const [timeSelected, setTimeSelected] = useState<boolean>(false);
 
   const handleDateChange = ({
@@ -41,8 +44,14 @@ export default function BookingCard() {
     setTimeSelected(!!timeISO);
 
     if (timeISO) {
-      console.log({ timestamp: Date.parse(timeISO) });
+      setTimeISO(timeISO);
     }
+  };
+
+  const handleConfirmation = () => {
+    if (!timeISO) return;
+
+    console.log({ timestamp: Date.parse(timeISO) });
   };
 
   return (
@@ -90,7 +99,9 @@ export default function BookingCard() {
             onChange={handleDateChange}
           />
 
-          <Button isActive={timeSelected}>Confirm</Button>
+          <Button isActive={timeSelected} onClick={handleConfirmation}>
+            Confirm
+          </Button>
         </CardContent>
       </Card>
     </Container>
