@@ -31,12 +31,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # основний каталог експорту
-          path: .next/static-export
-          # fallback, якщо твоя версія формує static/
-          fallback_path: .next/static
+          path: .next
           
-
   deploy:
     needs: build
     permissions:
