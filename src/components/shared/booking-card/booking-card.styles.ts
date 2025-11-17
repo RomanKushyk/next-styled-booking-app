@@ -45,6 +45,11 @@ export const BannerContent = styled.div`
   font-weight: 400;
   line-height: 150%;
   color: var(--text-light);
+
+  @media ${DEVICE.xsHeight} {
+    padding: 0 20px 10px;
+    gap: 5px;
+  }
 `;
 
 export const SessionDetails = styled.div`
@@ -142,6 +147,12 @@ export const Card = styled.div`
     gap: 32px;
     border-radius: 24px 24px 0 0;
     transform: translate(0, 0);
+  }
+
+  @media ${DEVICE.xsHeight} {
+    max-height: 75dvh;
+    padding: 24px 20px 8px;
+    gap: 24px;
   }
 `;
 

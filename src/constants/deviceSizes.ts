@@ -18,4 +18,5 @@ export const DEVICE = {
   tablet: `(max-width: ${SIZE.tablet})`,
   tabletLarge: `(max-width: ${SIZE.tabletLarge})`,
   desktop: `(max-width: ${SIZE.desktop})`,
+  xsHeight: `(max-height: 600px)`,
 };

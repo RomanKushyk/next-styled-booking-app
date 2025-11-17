@@ -11,6 +11,10 @@ export const Root = styled.div`
   @media ${DEVICE.tablet} {
     gap: 32px;
   }
+
+  @media ${DEVICE.xsHeight} {
+    gap: 24px;
+  }
 `;
 
 export const DateGroupWrapper = styled.div`
@@ -49,6 +53,7 @@ export const NavButton = styled.button`
   align-items: center;
   justify-content: center;
   color: #000;
+  -webkit-tap-highlight-color: transparent;
 
   @media ${DEVICE.tablet} {
     display: none;
