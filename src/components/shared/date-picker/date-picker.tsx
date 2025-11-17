@@ -148,7 +148,7 @@ export default function DateTimeSelector({
     }
   };
 
-  const scroll = (
+  const scrollRow = (
     el: HTMLElement | null,
     dir: "left" | "right",
     step: number = 72 * 3,
@@ -164,20 +164,36 @@ export default function DateTimeSelector({
   const handleDaysScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     if (!e.currentTarget) return;
 
-    const { scrollLeft = 0, scrollWidth = 0 } = e.target as HTMLElement;
+    const {
+      scrollLeft = 0,
+      clientWidth = 0,
+      scrollWidth = 0,
+    } = e.target as HTMLElement;
 
     setDaysScrollable(
-      !scrollLeft ? "left" : scrollLeft === scrollWidth ? "right" : "both",
+      !scrollLeft
+        ? "left"
+        : scrollLeft + clientWidth >= scrollWidth - 1
+          ? "right"
+          : "both",
     );
   };
 
   const handleTimeScroll = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     if (!e.currentTarget) return;
 
-    const { scrollLeft = 0, scrollWidth = 0 } = e.target as HTMLElement;
+    const {
+      scrollLeft = 0,
+      clientWidth = 0,
+      scrollWidth = 0,
+    } = e.target as HTMLElement;
 
     setTimeScrollable(
-      !scrollLeft ? "left" : scrollLeft === scrollWidth ? "right" : "both",
+      !scrollLeft
+        ? "left"
+        : scrollLeft + clientWidth >= scrollWidth - 1
+          ? "right"
+          : "both",
     );
   };
 
@@ -196,7 +212,7 @@ export default function DateTimeSelector({
       <RowWrapper>
         <NavButton
           aria-label="prev"
-          onClick={() => scroll(daysScrollRef.current, "left")}
+          onClick={() => scrollRow(daysScrollRef.current, "left")}
         >
           <Chevron
             direction="left"
@@ -231,7 +247,7 @@ export default function DateTimeSelector({
 
         <NavButton
           aria-label="next"
-          onClick={() => scroll(daysScrollRef.current, "right")}
+          onClick={() => scrollRow(daysScrollRef.current, "right")}
         >
           <Chevron
             direction="right"
@@ -244,7 +260,7 @@ export default function DateTimeSelector({
         <TimeRow>
           <NavButton
             aria-label="prev-time"
-            onClick={() => scroll(timesScrollRef.current, "left")}
+            onClick={() => scrollRow(timesScrollRef.current, "left")}
           >
             <Chevron
               direction="left"
@@ -279,7 +295,7 @@ export default function DateTimeSelector({
 
           <NavButton
             aria-label="next-time"
-            onClick={() => scroll(timesScrollRef.current, "right")}
+            onClick={() => scrollRow(timesScrollRef.current, "right")}
           >
             <Chevron
               direction="right"
