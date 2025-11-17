@@ -14,7 +14,8 @@ const nextConfig: NextConfig = {
   },
   output: "export",
   basePath: isProd ? "/next-styled-booking-app" : "",
-  assetPrefix: isProd ? "/next-styled-booking-app/" : "",
+  assetPrefix: isProd ? "/next-styled-booking-app" : "",
+  trailingSlash: true,
 };
 
 export default nextConfig;
