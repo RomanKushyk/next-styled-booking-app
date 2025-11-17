@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE } from "@/constants/deviceSizes";
 
 export const MonthsWrapper = styled.div`
   display: flex;
@@ -6,6 +7,10 @@ export const MonthsWrapper = styled.div`
   align-items: center;
   padding: 0 48px;
   gap: 45px;
+
+  @media ${DEVICE.tablet} {
+    padding: 0;
+  }
 `;
 
 export const MonthButton = styled.button`
