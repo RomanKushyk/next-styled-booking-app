@@ -10,7 +10,7 @@ export const DayButton = styled.button<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 2px 5px;
   border-radius: 8px;
   border: 1px solid
     ${({ $selected }) => ($selected ? "transparent" : "#e8ebf4")};
