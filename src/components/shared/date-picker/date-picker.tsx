@@ -2,6 +2,7 @@ import React, { JSX, useMemo, useRef, useState } from "react";
 import { addDays, startOfToday } from "date-fns";
 import {
   Root,
+  DateGroupWrapper,
   MonthsRowWrapper,
   RowWrapper,
   ScrollRow,
@@ -199,62 +200,64 @@ export default function DateTimeSelector({
 
   return (
     <Root>
-      <MonthsRowWrapper>
-        <MonthTabs
-          months={months}
-          activeIndex={activeMonthIndex}
-          onClickMonth={(idx) => {
-            scrollToMonthIndex(idx);
-          }}
-        />
-      </MonthsRowWrapper>
-
-      <RowWrapper>
-        <NavButton
-          aria-label="prev"
-          onClick={() => scrollRow(daysScrollRef.current, "left")}
-        >
-          <Chevron
-            direction="left"
-            color={daysScrollable !== "left" ? "#16171B" : "#C0C1D1"}
+      <DateGroupWrapper>
+        <MonthsRowWrapper>
+          <MonthTabs
+            months={months}
+            activeIndex={activeMonthIndex}
+            onClickMonth={(idx) => {
+              scrollToMonthIndex(idx);
+            }}
           />
-        </NavButton>
+        </MonthsRowWrapper>
 
-        <ScrollRow
-          ref={daysScrollRef}
-          role="list"
-          aria-label="dates row"
-          onScroll={handleDaysScroll}
-        >
-          {days.map((d) => {
-            const disabled = checkDateDisabled(d);
-            return (
-              <DayChip
-                key={d.toISOString()}
-                date={d}
-                onClick={() => handleSelectDate(d)}
-                disabled={disabled}
-                selected={
-                  selectedDate
-                    ? d.toDateString() === selectedDate.toDateString()
-                    : false
-                }
-                data-date={d.toISOString()}
-              />
-            );
-          })}
-        </ScrollRow>
+        <RowWrapper>
+          <NavButton
+            aria-label="prev"
+            onClick={() => scrollRow(daysScrollRef.current, "left")}
+          >
+            <Chevron
+              direction="left"
+              color={daysScrollable !== "left" ? "#16171B" : "#C0C1D1"}
+            />
+          </NavButton>
 
-        <NavButton
-          aria-label="next"
-          onClick={() => scrollRow(daysScrollRef.current, "right")}
-        >
-          <Chevron
-            direction="right"
-            color={daysScrollable !== "right" ? "#16171B" : "#C0C1D1"}
-          />
-        </NavButton>
-      </RowWrapper>
+          <ScrollRow
+            ref={daysScrollRef}
+            role="list"
+            aria-label="dates row"
+            onScroll={handleDaysScroll}
+          >
+            {days.map((d) => {
+              const disabled = checkDateDisabled(d);
+              return (
+                <DayChip
+                  key={d.toISOString()}
+                  date={d}
+                  onClick={() => handleSelectDate(d)}
+                  disabled={disabled}
+                  selected={
+                    selectedDate
+                      ? d.toDateString() === selectedDate.toDateString()
+                      : false
+                  }
+                  data-date={d.toISOString()}
+                />
+              );
+            })}
+          </ScrollRow>
+
+          <NavButton
+            aria-label="next"
+            onClick={() => scrollRow(daysScrollRef.current, "right")}
+          >
+            <Chevron
+              direction="right"
+              color={daysScrollable !== "right" ? "#16171B" : "#C0C1D1"}
+            />
+          </NavButton>
+        </RowWrapper>
+      </DateGroupWrapper>
 
       {selectedDate ? (
         <TimeRow>
