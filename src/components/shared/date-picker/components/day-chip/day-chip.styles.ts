@@ -19,6 +19,7 @@ export const DayButton = styled.button<{
     ${({ $selected }) => ($selected ? "--text-accent" : "--text-primary")}
   );
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
+  -webkit-tap-highlight-color: transparent;
   transition:
     border-color 0.3s ease,
     color 0.3s ease,

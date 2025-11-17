@@ -18,6 +18,7 @@ export const MonthButton = styled.button`
   cursor: pointer;
   color: var(--text-secondary);
   background: none;
+  -webkit-tap-highlight-color: transparent;
 
   font-family: var(--font-poppins), sans-serif;
   font-weight: 400;

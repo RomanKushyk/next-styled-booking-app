@@ -17,6 +17,7 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
   cursor: ${({ $isActive }) => ($isActive ? "pointer" : "not-allowed")};
   pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
   touch-action: ${({ $isActive }) => ($isActive ? "auto" : "none")};
+  -webkit-tap-highlight-color: transparent;
   transition:
     background 0.3s,
     scale 0.3s,
