@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Kaisei_Tokumin, Poppins } from "next/font/google";
 import { GlobalStyles } from "@/styles/GlobalStyles";
-import React, { StrictMode } from "react";
+import StyledComponentsRegistry from "./registry";
 import Favicon from "./favicon.ico";
+import { LoadingOverlay } from "./LoadingOverlay";
+import React from "react";
 
 const kaiseiTokumin = Kaisei_Tokumin({
   variable: "--font-kaisei-tokumin",
@@ -26,17 +28,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`${kaiseiTokumin.variable} ${poppins.variable}`}>
-        <StrictMode>
-          <GlobalStyles />
+        <LoadingOverlay />
 
+        <StyledComponentsRegistry>
+          <GlobalStyles />
           {children}
-        </StrictMode>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
