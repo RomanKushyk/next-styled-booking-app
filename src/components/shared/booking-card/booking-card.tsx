@@ -17,7 +17,6 @@ import {
   HeaderTitle,
   HeaderSubTitle,
   CardContent,
-  DatePickerWrapper,
 } from "./booking-card.styles";
 import ProfileImgD from "@/assets/images/profile-img-desktop.png";
 import ProfileImgM from "@/assets/images/profile-img-mobile.png";
@@ -67,9 +66,7 @@ export default function BookingCard() {
         </CardHeader>
 
         <CardContent>
-          <DatePickerWrapper>
-            <DateTimeSelector />
-          </DatePickerWrapper>
+          <DateTimeSelector />
 
           <Button isActive={true}>Confirm</Button>
         </CardContent>

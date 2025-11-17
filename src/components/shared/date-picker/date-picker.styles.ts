@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import { DEVICE } from "@/constants/deviceSizes";
 
-/* Root wrapper */
 export const Root = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,14 +21,12 @@ export const DateGroupWrapper = styled.div`
   width: 100%;
 `;
 
-/* Months row */
 export const MonthsRowWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `;
 
-/* Day row wrapper with fade shadows via pseudo-elements */
 export const RowWrapper = styled.div`
   position: relative;
   display: flex;
@@ -39,7 +36,6 @@ export const RowWrapper = styled.div`
   width: 100%;
 `;
 
-/* navigation arrows */
 export const NavButton = styled.button`
   width: 24px;
   height: 24px;
@@ -59,7 +55,6 @@ export const NavButton = styled.button`
   }
 `;
 
-/* scroll row - generic for days & times */
 export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   display: flex;
   flex-direction: row;
@@ -69,7 +64,6 @@ export const ScrollRow = styled.div<{ $asTime?: boolean }>`
   overflow-x: auto;
   scroll-behavior: smooth;
 
-  /* hide native scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -77,7 +71,6 @@ export const ScrollRow = styled.div<{ $asTime?: boolean }>`
     display: none;
   }
 
-  /* soft white fade shadows on edges using mask */
   position: relative;
   flex: 1;
 
