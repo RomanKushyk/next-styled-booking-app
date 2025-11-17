@@ -29,6 +29,8 @@ jobs:
           cp -R .next/server/app/* exported/
           mkdir -p exported/_next
           cp -R .next/static exported/_next/static
+          # ← КОПІЮЄМО favicon та інші public-файли
+          cp -R public/* exported/ || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
