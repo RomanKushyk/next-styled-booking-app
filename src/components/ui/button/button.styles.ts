@@ -18,6 +18,7 @@ export const ButtonEl = styled.button<{ $isActive: boolean }>`
   pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
   touch-action: ${({ $isActive }) => ($isActive ? "auto" : "none")};
   transition:
+    background 0.3s,
     scale 0.3s,
     filter 0.3s;
 

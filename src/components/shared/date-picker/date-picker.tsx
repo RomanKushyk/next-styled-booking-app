@@ -20,9 +20,9 @@ import Chevron from "@/components/icons/chevron";
 type Props = {
   /** emit selected date+time as Date + formatted time string */
   onChange?: (value: {
-    date: Date;
-    timeISO: string;
-    timeLabel: string;
+    date: Date | null;
+    timeISO: string | null;
+    timeLabel: string | null;
   }) => void;
   /** custom disabled function */
   disabledDate?: (date: Date) => boolean;
@@ -80,16 +80,17 @@ export default function DateTimeSelector({
     const now = new Date();
 
     // iterate hours 0..23 and steps
-    for (let h = 0; h < 24; h++) {
-      for (let m = 0; m < 60; m += minutesStep) {
-        const d = new Date(selectedDate);
-        d.setHours(h, m, 0, 0);
+    for (let hours = 0; hours < 24; hours++) {
+      for (let minutes = 0; minutes < 60; minutes += minutesStep) {
+        const date = new Date(selectedDate);
 
-        if (d < now) continue; // exclude past times
+        date.setHours(hours, minutes, 0, 0);
 
-        const iso = d.toISOString();
+        if (date < now) continue; // exclude past times
+
+        const iso = date.toISOString();
         // format label 12-hour hh:mm AM/PM
-        const label = d.toLocaleTimeString("en-US", {
+        const label = date.toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "2-digit",
           hour12: true,
@@ -117,15 +118,19 @@ export default function DateTimeSelector({
 
   const handleSelectDate = (d: Date) => {
     if (checkDateDisabled(d)) return;
+
     setSelectedDate(d);
     setSelectedTimeISO(null);
-    // onChange not called until time selected
+    onChange?.({ date: selectedDate, timeISO: null, timeLabel: null });
+
     // scroll to center selected date (nice UX)
     const container = daysScrollRef.current;
+
     if (container) {
       const el = container.querySelector(
         `[data-date="${d.toISOString()}"]`,
       ) as HTMLElement | null;
+
       if (el) {
         const center =
           el.offsetLeft + el.offsetWidth / 2 - container.clientWidth / 2;
@@ -136,10 +141,8 @@ export default function DateTimeSelector({
 
   const handleSelectTime = (iso: string, label: string) => {
     setSelectedTimeISO(iso);
+    onChange?.({ date: selectedDate, timeISO: iso, timeLabel: label });
 
-    if (selectedDate && onChange) {
-      onChange({ date: selectedDate, timeISO: iso, timeLabel: label });
-    }
     // optional: auto-scroll time into center
     const container = timesScrollRef.current;
 
