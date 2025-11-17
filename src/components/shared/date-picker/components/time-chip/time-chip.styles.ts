@@ -13,6 +13,7 @@ export const TimeButton = styled.button<{ $selected?: boolean }>`
     ${({ $selected }) => ($selected ? "--text-accent" : "--text-primary")}
   );
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   transition:
     border-color 0.3s ease,
