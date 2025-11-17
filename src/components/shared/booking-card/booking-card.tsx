@@ -26,8 +26,25 @@ import Background from "@/assets/icons/background-m.svg";
 import Image from "next/image";
 import Button from "@/components/ui/button/button";
 import DateTimeSelector from "@/components/shared/date-picker/date-picker";
+import { useState } from "react";
 
 export default function BookingCard() {
+  const [timeSelected, setTimeSelected] = useState<boolean>(false);
+
+  const handleDateChange = ({
+    timeISO,
+  }: {
+    date: Date | null;
+    timeISO: string | null;
+    timeLabel: string | null;
+  }) => {
+    setTimeSelected(!!timeISO);
+
+    if (timeISO) {
+      console.log({ timestamp: Date.parse(timeISO) });
+    }
+  };
+
   return (
     <Container>
       <Banner>
@@ -66,9 +83,14 @@ export default function BookingCard() {
         </CardHeader>
 
         <CardContent>
-          <DateTimeSelector />
+          <DateTimeSelector
+            disableWeekends={false}
+            daysCount={42}
+            animationMs={300}
+            onChange={handleDateChange}
+          />
 
-          <Button isActive={true}>Confirm</Button>
+          <Button isActive={timeSelected}>Confirm</Button>
         </CardContent>
       </Card>
     </Container>
