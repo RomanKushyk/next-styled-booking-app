@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages (Next.js)
+name: Deploy to GitHub Pages (Next.js 16)
 
 on:
   workflow_dispatch:
@@ -26,19 +26,16 @@ jobs:
         run: npm install
 
       - name: Build Next.js project
-        env:
-          # ВАЖЛИВО: шлях репозиторію як basePath
-          NEXT_PUBLIC_BASE_PATH: /next-styled-booking-app
-        run: |
-          echo "NEXT_PUBLIC_BASE_PATH=/next-styled-booking-app" >> .env
-          npx next build
-          npx next export
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Next.js експортує в папку out/
-          path: out
+          # основний каталог експорту
+          path: .next/static-export
+          # fallback, якщо твоя версія формує static/
+          fallback_path: .next/static
+          
 
   deploy:
     needs: build
