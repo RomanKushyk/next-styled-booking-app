@@ -17,7 +17,7 @@ export const MonthButton = styled.button`
   font-family: var(--font-poppins), sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: 21px;
+  line-height: 150%;
   letter-spacing: 0;
   vertical-align: middle;
 
