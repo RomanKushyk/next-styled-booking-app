@@ -28,11 +28,11 @@ jobs:
       - name: Build Next.js project
         run: npm run build
 
-      - name: Upload artifact
+      - name: Upload artifact (Next.js static export)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .next
-          
+          path: .next/server/app
+
   deploy:
     needs: build
     permissions:
