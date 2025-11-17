@@ -25,7 +25,7 @@ export const DayButton = styled.button<{
     transform 0.3s ease;
 
   &:hover {
-    transform: translateY(1px);
+    transform: translateY(2px);
   }
 `;
 
